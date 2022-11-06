@@ -26,7 +26,9 @@ function onInput(evt) {
               <p class="name">${item.name.official}</p>
               <p class="capital">${item.capital}</p>
               <p class="population">${item.population}</p>
-              <p class="languages">${item.languages}</p>
+              <p class="languages">${Object.values(item.languages).join(
+                ', '
+              )}</p>
           </li>`
       )
       .join('');
