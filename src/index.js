@@ -13,6 +13,10 @@ inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 function onInput(evt) {
   resetData();
   const coutriesSearch = evt.target.value;
+  if (coutriesSearch === '') {
+    resetData();
+    return;
+  }
 
   fetchCountries(coutriesSearch).then(onMarkup);
 
