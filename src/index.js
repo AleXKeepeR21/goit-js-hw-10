@@ -17,14 +17,37 @@ inputEl.addEventListener('input', onInput);
 //   fetchCountries(name) ;
 // }
 
+// function onInput(evt) {
+//   const inputValue = evt.currentTarget.value;
+//   // console.log(name);
+
+//   fetchCountries(inputValue).then(onMarkup);
+// }
+
+// function onMarkup() {
+//   countryList.innerHTML = data
+//     .map(item => {
+//       return `<li class="item">
+//               <img src= ${item.flags} alt="">
+//               <p class="name">${item.name}</p>
+//               <p class="capital">${item.capital}</p>
+//               <p class="population">${item.population}</p>
+//               <p class="languages">${item.languages}</p>
+//           </li>`;
+//     })
+//     .join('');
+//   // countryList.insertAdjacentHTML('beforeend', markup);
+// }
+
 function onInput(evt) {
   const name = evt.currentTarget.value;
   // console.log(name);
 
-  fetchCountries(name).then(data => onMarkup);
+  fetchCountries(name).then(onMarkup);
 
-  function onMarkup() {
-    const markup = data.results
+  function onMarkup(data) {
+    // console.log(data)
+    const markup = data
       .map(
         item =>
           `<li class="item">
@@ -36,8 +59,6 @@ function onInput(evt) {
           </li>`
       )
       .join('');
-    document
-      .querySelector('.country-list')
-      .insertAdjacentHTML('beforeend', markup);
+    countryList.insertAdjacentHTML('beforeend', markup);
   }
 }
