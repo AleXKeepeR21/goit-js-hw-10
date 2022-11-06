@@ -1,6 +1,7 @@
 import './css/styles.css';
 import { fetchCountries } from './js/fetchCountries.js';
 import debounce from 'lodash.debounce';
+import Notiflix from 'notiflix';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -13,8 +14,15 @@ inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 function onInput(evt) {
   resetData();
   const coutriesSearch = evt.target.value;
+
   if (coutriesSearch === '') {
     resetData();
+    return;
+  }
+
+  if (coutriesSearch.trim() === '') {
+    Notiflix.Notify.failure('Oops, there is no country with that name');
+    // alert('Увага! Заповніть усі поля.');
     return;
   }
 
