@@ -8,7 +8,7 @@ const inputEl = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-inputEl.addEventListener('input', debounce(onInput, 3000));
+inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 function onInput(evt) {
   const name = evt.target.value;
