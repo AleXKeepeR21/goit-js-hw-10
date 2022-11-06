@@ -8,14 +8,36 @@ const inputEl = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-// inputEl.addEventListener('input', onInput);
+inputEl.addEventListener('input', onInput);
 
 // function onInput(evt) {
-//   // console.dir(evt.currentTarget.elements);
+//   const name = evt.currentTarget.value;
+//   console.log(name);
 
-//   // const input = evt.currentTarget..value;
-//   // console.log(input);
-
+//   fetchCountries(name) ;
 // }
 
-fetchCountries();
+function onInput(evt) {
+  const name = evt.currentTarget.value;
+  // console.log(name);
+
+  fetchCountries(name).then(data => onMarkup);
+
+  function onMarkup() {
+    const markup = data.results
+      .map(
+        item =>
+          `<li class="item">
+              <img src= ${item.flags} alt="">
+              <p class="name">${item.name}</p>
+              <p class="capital">${item.capital}</p>
+              <p class="population">${item.population}</p>
+              <p class="languages">${item.languages}</p>
+          </li>`
+      )
+      .join('');
+    document
+      .querySelector('.country-list')
+      .insertAdjacentHTML('beforeend', markup);
+  }
+}
