@@ -22,7 +22,6 @@ function onInput(evt) {
 
   if (coutriesSearch.trim() === '') {
     Notiflix.Notify.failure('Oops, there is no country with that name');
-    // alert('Увага! Заповніть усі поля.');
     return;
   }
 
@@ -56,6 +55,18 @@ function onInput(evt) {
       .join('');
     countryInfo.insertAdjacentHTML('beforeend', markupCountryInfo);
     console.log(data);
+
+    // if (data.length > 10) {
+    //   Notiflix.Notify.info(
+    //     'Too many matches found. Please enter a more specific name.'
+    //   );
+    //   return;
+    // } else if (2 <= data.length >= 10) {
+    //   markupCountryList;
+    // } else {
+    //   markupCountryList;
+    //   markupCountryInfo;
+    // }
   }
 }
 
